@@ -7,15 +7,16 @@ The code I included is divided in two sections:
 ## Georgia Tech Code:
 ### Assignment links:
 
-[Assignment 3](https://docs.google.com/document/d/1XoHDkkI1uB1zSV8_bSPNzYAgDdFfG07bherQDAfycPk/edit) Basic Java coding and JUnit 
+[Assignment 3](https://docs.google.com/document/d/1XoHDkkI1uB1zSV8_bSPNzYAgDdFfG07bherQDAfycPk/edit) Basic Java coding and JUnit [solution](GT6300/Assignment3)
 
-[Assignment 4](https://docs.google.com/document/d/1Rdunq1kGyjJhJtMhkFzEwJIKIGac2bthnt7HMfEBuDQ/edit) Simple Android App
+[Assignment 4](https://docs.google.com/document/d/1Rdunq1kGyjJhJtMhkFzEwJIKIGac2bthnt7HMfEBuDQ/edit) Simple Android App [solution](GT6300/Assignment4)
 
-[Assignment 5](https://docs.google.com/document/d/1PAdNpxhTXzi03zVBTeho82epmj1xsOxRPFPv3868wno/edit) Software Design 
 
-[Assignment 6](https://docs.google.com/document/d/1jJaLtRN3Or6k2mx_P9LH8blMBrKPQ3-KbK41DDA7Wgk/edit) Category partition (Black box Testing)
+[Assignment 5](https://docs.google.com/document/d/1PAdNpxhTXzi03zVBTeho82epmj1xsOxRPFPv3868wno/edit) Software Design [solution](GT6300/Assignment5)
 
-[Agile Project 3 Deliverable 1](https://docs.google.com/document/d/1_RVe-7SWxkO65AfXpDtHmJmDQNbJLa8c4_p4upgeWUU/edit) Grades Calculator 
+[Assignment 6](https://docs.google.com/document/d/1jJaLtRN3Or6k2mx_P9LH8blMBrKPQ3-KbK41DDA7Wgk/edit) Category partition (Black box Testing) [solution](GT6300/Assignment6)
+
+[Agile Project 3 Deliverable 1](https://docs.google.com/document/d/1_RVe-7SWxkO65AfXpDtHmJmDQNbJLa8c4_p4upgeWUU/edit) Grades Calculator [solution for all deliverables](GT6300/Project3)
 
 [Agile Project 3 Deliverable 2](https://docs.google.com/document/d/14o8DE8ApNOXwexKwinp03V66AoeEUSqkU1G0rEfI-F8/edit) Grades Calculator 
 
