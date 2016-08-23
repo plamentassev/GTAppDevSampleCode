@@ -1,0 +1,819 @@
+swagger: '2.0'
+info:
+  title: 'IHG: Trip Extras: Cars'
+  description: For working with car rental that can be added to a hotel stay.
+  version: 1.0.0
+host: qap.www.ihg.com
+schemes:
+  - https
+basePath: /tripextras/cars/v1
+produces:
+  - application/json
+paths:
+  '/locations/{locationId}':
+    get:
+      summary: 'Look up detail of a single car rental location.'
+      parameters:
+        - name: locationId
+          in: path
+          type: string
+          description: Unique identifier of this location.
+          required: true
+        - name: localeCountry
+          in: query
+          description: Locale country ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+        - name: localeLanguage
+          in: query
+          description: Locale language ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+      responses:
+        '200':
+          description: Serve location detail
+          schema:
+            type: object
+            $ref: '#/definitions/RentalLocation'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Server error in IHG service
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '503':
+          description: Server error in backend provider
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /locations/search/text:
+    get:
+      summary: 'Search for car rental locations using text matching.'
+      parameters:
+        - name: text
+          in: query
+          type: string
+          description: Exclude locations not matching this text.
+        - name: limit
+          in: query
+          type: integer
+          description: Serve no more than this number of locations.
+          required: true
+        - name: localeCountry
+          in: query
+          description: Locale country ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+        - name: localeLanguage
+          in: query
+          description: Locale language ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+      responses:
+        '200':
+          description: Location search was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RentalLocation'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Server error in IHG service
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '503':
+          description: Server error in backend provider
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  '/locations/search/hotels/{hotelCode}':
+    get:
+      summary: 'Search for car rental locations near the given hotel.'
+      parameters:
+        - name: hotelCode
+          in: path
+          description: Exclude locations not within search distance of this hotel.
+          type: string
+          format: XXXXX
+          required: true
+        - name: radius
+          in: query
+          description: Exclude locations further away from the hotel than this radius.
+          required: true
+          type: number
+          format: float
+          default: 30
+          minimum: 1
+        - name: unit
+          in: query
+          description: Unit of measure for radius parameter (miles or kilometers)
+          type: string
+          enum:
+            - mi
+            - km
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: Serve no more than this number of locations.
+          required: true
+        - name: localeCountry
+          in: query
+          description: Locale country ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+        - name: localeLanguage
+          in: query
+          description: Locale language ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+      responses:
+        '200':
+          description: Location search was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RentalLocation'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Server error in IHG service
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '503':
+          description: Server error in backend provider
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  '/locations/search/hotels/{hotelCode}/airport':
+    get:
+      summary: 'Search for car rental locations in a second-degree radius search around the given hotel: finding the nearest major airport to the hotel, serve all rental locations near that airport.'
+      parameters:
+        - name: hotelCode
+          in: path
+          description: Find the single nearest major airport within search distance of this hotel and search for rental locations near that airport.
+          type: string
+          format: XXXXX
+          required: true
+        - name: hotelRadius
+          in: query
+          description: Exclude airports further away from the hotel than this radius.
+          required: true
+          type: number
+          format: float
+          default: 30
+          minimum: 1
+        - name: airportRadius
+          in: query
+          description: Exclude locations further away from the airport than this radius.
+          required: true
+          type: number
+          format: float
+          default: 30
+          minimum: 1
+        - name: unit
+          in: query
+          description: Unit of measure for both radius parameters (miles or kilometers)
+          type: string
+          enum:
+            - mi
+            - km
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: Serve no more than this number of locations.
+          required: true
+        - name: localeCountry
+          in: query
+          description: Locale country ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+        - name: localeLanguage
+          in: query
+          description: Locale language ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+      responses:
+        '200':
+          description: Location search was successful
+          schema:
+            type: object
+            $ref: '#/definitions/RentalLocationsWithAirport'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Server error in IHG service
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '503':
+          description: Server error in backend provider
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  '/locations/{pickupLocationId}/vehicles/availability':
+    get:
+      summary: 'Vehicle availability at a single car rental location (aka "shop")'
+      description: 'Given filter criteria as query params, serve real-time availability and pricing for rental cars at a specific rental location.'
+      parameters:
+        - name: pickupLocationId
+          in: path
+          description: Unique identifier of a rental location where the vehicle will be picked up
+          required: true
+          type: string
+        - name: pickupDateTime
+          in: query
+          description: "Exclude vehicles not available to be picked up at the pick-up location at this date and time.  Time zone MUST NOT be specified as time is relative to pick-up location's native time zone.  Ex: 2016-04-15T10:00:00"
+          required: true
+          type: string
+          format: ISO 8601
+        - name: dropoffDateTime
+          in: query
+          description: "Exclude vehicles not available to be dropped off at the drop-off location at this date and time.  Time zone MUST NOT be specified as time is relative to drop-off location's native time zone.  Ex: 2016-04-16T10:00:00"
+          required: true
+          type: string
+          format: ISO 8601
+        - name: dropoffLocationId
+          in: query
+          description: 'Unique identifier of a rental location where the vehicle will be dropped off.  If not specified, defaults to same as pickupLocationId.'
+          required: false
+          type: string
+        - name: vehicleTypes
+          in: query
+          description: 'Exclude vehicles not matching any of these car types.  Multiple types may be specified comma-separated.  Accepted values: compact, standard, suv, luxury.  Default: all types.'
+          required: false
+          type: string
+          collectionFormat: csv
+          enum:
+            - compact
+            - standard
+            - suv
+            - luxury
+        - name: promoCode
+          in: query
+          description: 'Exclude vehicles not available for rental under this promotional rate.  Prices will be returned according to this promotional rate.  Default: IHG negotiated rate, or open market rate.'
+          required: false
+          type: string
+        - name: vehicleTypeLimit
+          in: query
+          description: Serve no more than this number of availability records for each vehicle type requested.  Default = 6
+          required: true
+          type: integer
+          default: 6
+        - name: totalLimit
+          in: query
+          description: 'Serve no more than this number of availability records total across all vehicle types.  Default = vehicleTypeLimit * number of vehicle types.'
+          required: true
+          type: integer
+          default: 24
+        - name: displayCurrency
+          in: query
+          description: ISO 4217 alphabetic currency code to be used in the response for prices and charges
+          required: false
+          type: string
+          format: XXX
+        - name: localeCountry
+          in: query
+          description: Locale country ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+        - name: localeLanguage
+          in: query
+          description: Locale language ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+      responses:
+        '200':
+          description: Availability search was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/VehicleAvailability'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Server error in IHG service
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '503':
+          description: Server error in backend provider
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  '/availability/{bookToken}':
+    get:
+      summary: 'Look up detail of a single availability record (aka "price check")'
+      parameters:
+        - name: bookToken
+          in: path
+          type: string
+          description: Unique identifier of this availability record.
+          required: true
+        - name: displayCurrency
+          in: query
+          description: ISO 4217 alphabetic currency code to be used in the response for prices and charges
+          required: false
+          type: string
+          format: XXX
+        - name: localeCountry
+          in: query
+          description: Locale country ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+        - name: localeLanguage
+          in: query
+          description: Locale language ISO code to be used for internationalization of returned text.  No guarantee this field will be respected.
+          required: false
+          type: string
+          format: XX
+      responses:
+        '200':
+          description: Serve availability detail
+          schema:
+            type: object
+            $ref: '#/definitions/VehicleAvailability'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Server error in IHG service
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '503':
+          description: Server error in backend provider
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  ErrorResponse:
+    type: object
+    description: This structure is returned in any condition that is considered an error.
+    properties:
+      status:
+        type: integer
+        description: The HTTP status echoed into the response data, for convenience.
+      message:
+        type: string
+        description: Any text that could be helpful in debugging, including error messages, stack traces, etc.
+  VehicleAvailability:
+    type: object
+    description: A single vehicle availability record.  This record represents a commitment by the rental location to honor a rental according to this information if booked before record expires.  Attempts to book a record more than once may be rejected.  There is no direct correspondence between this record and any physical vehicle.
+    properties:
+      bookToken:
+        type: string
+        description: Unique identifier of this availability record.
+      expiry:
+        type: string
+        description: 'Attempts to book this availability record after this time may be rejected by the supplier.  This is an absolute date and time, with UTC offset.  Ex: 2016-04-15T22:10:00Z'
+        format: ISO 8601
+      supplierCode:
+        type: string
+        description: Unique identifier of the supplier (rental company) backing the availability.
+      pickupLocationId:
+        type: string
+        description: Unique identifier of a rental location where the vehicle will be picked up
+      dropoffLocationId:
+        type: string
+        description: Unique identifier of a rental location where the vehicle will be dropped off
+      pickupDateTime:
+        description: "Vehicle is to be picked up at the pick-up location at this date and time.  Time of day is relative to pick-up location's native time zone.  Ex: 2016-04-15T10:00:00"
+        type: string
+        format: ISO 8601
+      dropoffDateTime:
+        description: "Vehicle is to be dropped off at the drop-off location at this date and time.  Time of day is relative to drop-off location's native time zone.  Ex: 2016-04-16T10:00:00"
+        type: string
+        format: ISO 8601
+      promoCode:
+        description: Promotional code provided in order to qualify for the rate in this availability record.  Absent if IHG negotiated rate or market rate was used.
+        type: string
+      vehicle:
+        type: object
+        $ref: '#/definitions/Car'
+      rate:
+        type: object
+        $ref: '#/definitions/CarRate'
+    xml:
+      name: VehicleAvailability
+  CarRate:
+    type: object
+    description: Object containing all the pieces that created the total charge
+    properties:
+      description:
+        type: string
+        description: 'Rate description (e.g Minimum 2 Day(s) rental; Return rental by Tuesday 9:59)'
+      actualTotalCharge:
+        type: object
+        $ref: '#/definitions/Price'
+        description: Total charge in native currency of the pick-up location
+      displayTotalCharge:
+        type: object
+        $ref: '#/definitions/Price'
+        description: Total charge converted into the requested currency (not authoritative)
+      actualTotalChargeNoTaxes:
+        type: object
+        $ref: '#/definitions/Price'
+        description: 'Total charge without taxes, in native currency of the pick-up location'
+      displayTotalChargeNoTaxes:
+        type: object
+        $ref: '#/definitions/Price'
+        description: 'Total charge without taxes, converted into the requested currency (not authoritative)'
+      actualBaseCharge:
+        type: object
+        $ref: '#/definitions/Price'
+        description: 'Base charge (no options or taxes), in native currency of the pick-up location'
+      displayBaseCharge:
+        type: object
+        $ref: '#/definitions/Price'
+        description: 'Base charge (no options or taxes), converted into the requested currency (not authoritative)'
+      baseChargeComponents:
+        type: array
+        items:
+          $ref: '#/definitions/PriceComponent'
+        description: How the rate is calculated
+      itemization:
+        type: array
+        items:
+          $ref: '#/definitions/Surcharge'
+        description: Taxes and fees applied to base charge
+      distanceRestriction:
+        type: object
+        $ref: '#/definitions/DistanceRestriction'
+        description: Distance restrictions information
+      salesModel:
+        type: string
+        description: "Whether the user is charged upon booking ('Pay Now') or upon checkin ('Pay Later')"
+        default: Pay Now
+        enum:
+          - Pay Now
+          - Pay Later
+    xml:
+      name: CarRate
+  Price:
+    type: object
+    description: A price with currency information
+    properties:
+      amount:
+        type: string
+        description: Price formatted according to norms of currency and locale
+      currencyCode:
+        type: string
+        description: ISO alphabetic currency code
+        pattern: XXX
+      currencySymbol:
+        type: string
+        description: IHG designated currency symbol for display
+    xml:
+      name: Price
+  DistanceRestriction:
+    type: object
+    description: Charge per distance unit
+    properties:
+      Distance:
+        type: integer
+        description: Distance allowed per day without charge if IsUnlimited is false
+      IsUnlimited:
+        type: boolean
+        description: Is there a charge per distance unit
+      Period:
+        type: string
+        description: "Type of time period (e.g. 'Day')"
+        default: Day
+        enum:
+          - Day
+          - Week
+          - Month
+      Unit:
+        type: string
+        description: "Type of distance unit (e.g. 'Mile')"
+    xml:
+      name: DistanceRestriction
+  PriceComponent:
+    type: object
+    description: A calculation shows how a price is assessed over a time period
+    properties:
+      actualCharge:
+        type: object
+        $ref: '#/definitions/Price'
+      displayCharge:
+        type: object
+        $ref: '#/definitions/Price'
+      quantity:
+        type: integer
+        description: Quantity of time periods
+      unit:
+        type: string
+        description: Period of time
+        default: Day
+        enum:
+          - Hour
+          - Day
+          - Week
+          - Month
+          - Year
+    xml:
+      name: PriceComponent
+  Surcharge:
+    type: object
+    description: Surcharge container element
+    properties:
+      actualCharge:
+        type: object
+        $ref: '#/definitions/Price'
+      displayCharge:
+        type: object
+        $ref: '#/definitions/Price'
+      components:
+        type: array
+        items:
+          $ref: '#/definitions/PriceComponent'
+      surchargeType:
+        type: string
+        description: 'Whether surcharge is a tax, fee, coverage, monthly or other'
+        enum:
+          - Tax
+          - Fee
+          - Coverage
+          - Month
+          - Miscellaneous
+      surchargeCode:
+        type: string
+      description:
+        type: string
+        description: User-presentable explanation of the surcharge
+      includedInRate:
+        type: boolean
+        description: Whether this surcharge is included in the rate totals
+      required:
+        type: boolean
+        description: Whether renter will be required to pay this surcharge
+      taxIncluded:
+        type: boolean
+        description: Whether tax is included in this surcharge
+    xml:
+      name: Surcharge
+  Photo:
+    type: object
+    description: Car photo
+    properties:
+      name:
+        type: string
+        description: Optional photo name or caption
+      thumbUrl:
+        type: string
+        description: Image thumbnail URL
+      url:
+        type: string
+        description: Image URL
+    xml:
+      name: Photo
+  Car:
+    type: object
+    description: Information about the vehicle itself.
+    properties:
+      primaryPhoto:
+        type: object
+        $ref: '#/definitions/Photo'
+      vehicleType:
+        type: string
+        description: Vehicle type according to IHG grouping
+        enum:
+          - compact
+          - standard
+          - suv
+          - luxury
+      vehicleCategory:
+        type: string
+        description: Vehicle category from supplier
+      vehicleClass:
+        type: string
+        description: Vehicle class from supplier
+      otherPhotos:
+        type: array
+        items:
+          $ref: '#/definitions/Photo'
+      ageRequirements:
+        type: object
+        description: Driver age requirements
+        $ref: '#/definitions/AgeRequirements'
+      airConditioning:
+        type: boolean
+        description: Does car have air conditioning
+      antiLockBrakes:
+        type: boolean
+        description: Does car have an anti-lock braking system
+      description:
+        type: string
+        description: Text description of vehicle
+      doors:
+        type: integer
+        description: Number of car doors
+      driverAirbag:
+        type: boolean
+        description: Does car have a driver-side airbag
+      driveTypeCode:
+        type: string
+        description: Car drive type code
+      dualAirbag:
+        type: string
+        description: Does car have a dual airbag system
+      fuelEconomy:
+        type: object
+        $ref: '#/definitions/FuelEconomy'
+        description: The fuel economy of a car
+      fuelTypeCode:
+        type: string
+        description: Car fuel type code
+      guaranteeRequired:
+        type: boolean
+        description: Is a guarantee required to rent this car
+      luggageCapacity:
+        type: integer
+        description: Number of pieces of luggage that the car can hold
+      passengerAirbag:
+        type: boolean
+        description: Does car have a passenger-side airbag
+      seats:
+        type: integer
+        description: Number of car seats
+      SIPP:
+        type: string
+        description: ACRISS car classification code for the vehicle
+      sunroof:
+        type: boolean
+        description: Does car have a sunroof
+      transmissionTypeCode:
+        type: string
+        description: Car transmission code
+    xml:
+      name: CarDetails
+  AgeRequirements:
+    type: object
+    description: Requirements for the age of the Driver
+    properties:
+      minimumAge:
+        type: integer
+        description: Minimum age of the Driver
+      surchargeBegin:
+        type: integer
+        description: Drivers aged between surchargeBegin and surchargeEnd will be assessed a young-driver surcharge
+      surchargeEnd:
+        type: integer
+        description: Drivers aged between surchargeBegin and surchargeEnd will be assessed a young-driver surcharge
+    xml:
+      name: AgeRequirements
+  FuelEconomy:
+    type: object
+    description: Fuel Economy
+    properties:
+      amount:
+        type: integer
+        description: The distance a car can travel per unit of fuel
+      unit:
+        type: string
+        description: The fuel economy unit of measure (miles/gallon or kilometers/liter)
+        enum:
+          - MPG
+          - KPL
+    xml:
+      name: FuelEconomy
+  RentalLocationsWithAirport:
+    type: object
+    description: 'Array of rental locations plus information about the major airport they are close to'
+    properties:
+      locations:
+        type: array
+        items:
+          $ref: '#/definitions/RentalLocation'
+      airport:
+        type: object
+        $ref: '#/definitions/Airport'
+  Airport:
+    type: object
+    description: 'Describes an airport in sufficient detail for purposes of trip extras shopping'
+    properties:
+      iataCode:
+        description: "IATA (Int'l Air Transport Ass'n) standard airport code (ex: 'LAX'): http://www.iata.org/publications/Pages/coding.aspx"
+        type: string
+        format: XXX
+      fullName:
+        description: 'Full name of the airport (ex: Atlanta Hartsfield-Jackson International Airport), localized to requested display locale'
+        type: string
+      latitude:
+        description: 'A valid latitude (floating point allowed) in the range (-90.0, 90.0).'
+        type: number
+      longitude:
+        description: 'A valid longitude (floating point allowed) in the range (-180.0, 180.0).'
+        type: number
+      postalAddress:
+        description: 'Postal address of the airport, with fields localized to requested display locale as applicable'
+        type: object
+        $ref: '#/definitions/PostalLocation'
+  RentalLocation:
+    type: object
+    description: 'This is a preliminary definition.'
+    properties:
+      Code:
+        type: string
+        description: Location code
+      Id:
+        type: string
+        description: Location Id
+      IsAirportLocation:
+        type: boolean
+        description: Present if an airport location
+      postalLocation:
+        type: object
+        $ref: '#/definitions/PostalLocation'
+      Name:
+        type: string
+        description: Location name
+      Phone:
+        type: string
+        description: Location phone number
+      Type:
+        type: string
+        description: "Location type (e.g. 'In terminal')"
+      Longitude:
+        type: number
+        description: 'A valid longitude (floating point allowed) in the range (-180.0, 180.0).'
+      Latitude:
+        type: number
+        description: 'A valid latitude (floating point allowed) in the range (-90.0, 90.0).'
+      nativeTimeZone:
+        type: string
+        format: 'continent/city'
+        description: 'A standard IANA TZ Database identifier for the native time zone of the car rental location.  Example: "America/New_York".  NOT "EST".  http://www.iana.org/time-zones'
+    xml:
+      name: RentalLocation
+  PostalLocation:
+    type: object
+    description: Location
+    properties:
+      Address1:
+        type: string
+        description: Address line 1
+      Address2:
+        type: string
+        description: Address line 2
+      City:
+        type: string
+      StateProvince:
+        type: object
+        $ref: '#/definitions/StateProvince'
+        description: State/province
+      PostalCode:
+        type: string
+      Country:
+        type: object
+        $ref: '#/definitions/Country'
+    xml:
+      name: PostalLocation
+  StateProvince:
+    type: object
+    description: Location
+    properties:
+      Code:
+        type: string
+        format: XX
+        description: "ISO 2-letter State/Province code (e.g. MA')"
+      Label:
+        type: string
+        description: 'What to call the state/province.  This value is localized to the requested display locale.  Examples for US/EN: "State", "Province", "Prefecture"'
+      Description:
+        type: string
+        description: State/province full name
+    xml:
+      name: StateProvince
+  Country:
+    type: object
+    description: Location
+    properties:
+      Code:
+        type: string
+        description: "ISO 2-letter Country code (e.g. 'US')"
+      Description:
+        type: string
+        description: Country name
+    xml:
+      name: Country
