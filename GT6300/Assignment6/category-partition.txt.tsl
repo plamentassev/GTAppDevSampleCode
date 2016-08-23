@@ -1,0 +1,672 @@
+
+Test Case 1  		<error>
+   OptionPresentOrNot :  NotPresent
+
+
+Test Case 2  		<error>
+   Fields specified :  not specified
+
+
+Test Case 3  		<error>
+   Fields separated with a comma :  notSeparated
+
+
+Test Case 4  		<single>
+   Fields Specified with Individual Numbers where :  number < 0
+
+
+Test Case 5  		<single>
+   Fields Specified with Individual Numbers where :  number == 0
+
+
+Test Case 6  		<single>
+   Fields Specified with Individual Numbers where :  number == 1
+
+
+Test Case 7  		<single>
+   Fields Specified with Individual Numbers where :  number >0 where number grater than max number of fields in file
+
+
+Test Case 8  		<error>
+   Fields Specified with Individual Numbers where :  number >0 where number grater than maxInt (or number triggering error)
+
+
+Test Case 9  		<single>
+   Fields specified as range of correct numbers where :  number1 or number2 < 0
+
+
+Test Case 10 		<single>
+   Fields specified as range of correct numbers where :  number1 or number2 == 0
+
+
+Test Case 11 		<single>
+   Fields specified as a valid mix of range, number :  not separated with comma
+
+
+Test Case 12 		<error>
+   DelimeterSpecified_Yes/No :  delimeterNotSpecified
+
+
+Test Case 13 		<error>
+   Delimeter length :  more than one char
+
+
+Test Case 14 		<error>
+   List specified :  not specified
+
+
+Test Case 15 		<error>
+   List separated with a comma :  notSeparated
+
+
+Test Case 16 		<single>
+   List Specified with Individual Numbers where :  number < 0
+
+
+Test Case 17 		<single>
+   List Specified with Individual Numbers where :  number == 0
+
+
+Test Case 18 		<single>
+   List Specified with Individual Numbers where :  number == 1
+
+
+Test Case 19 		<single>
+   List Specified with Individual Numbers where :  number >0 where number grater than max number of fields in file
+
+
+Test Case 20 		<error>
+   List Specified with Individual Numbers where :  number >0 where number grater than maxInt (or number triggering error)
+
+
+Test Case 21 		<single>
+   List specified as range of correct numbers where :  number1 or number2 < 0
+
+
+Test Case 22 		<single>
+   List specified as range of correct numbers where :  number1 or number2 == 0
+
+
+Test Case 23 		<single>
+   List specified as a valid mix of range, number :  not separated with comma
+
+
+Test Case 24 		<single>
+   File_Size :  empty
+
+
+Test Case 25 		<error>
+   File_Size :  too large for parser
+
+
+Test Case 26 		(Key = 1.1.1.1.1.4.3.0.0.0.0.0.0.0.0.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as number
+   Fields Specified with Individual Numbers where     :  number >0 less than the max number of fields in the file
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 27 		(Key = 1.1.1.1.1.4.3.0.0.0.0.0.0.0.0.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as number
+   Fields Specified with Individual Numbers where     :  number >0 less than the max number of fields in the file
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 28 		(Key = 1.1.1.1.2.0.3.0.0.0.0.0.0.0.0.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as specified as range
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 29 		(Key = 1.1.1.1.2.0.3.0.0.0.0.0.0.0.0.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as specified as range
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 30 		(Key = 1.1.1.1.2.0.4.0.0.0.0.0.0.0.0.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as specified as range
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 == number2
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 31 		(Key = 1.1.1.1.2.0.4.0.0.0.0.0.0.0.0.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as specified as range
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 == number2
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 32 		(Key = 1.1.1.1.3.0.3.0.0.0.0.0.0.0.0.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as number followed by range
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 33 		(Key = 1.1.1.1.3.0.3.0.0.0.0.0.0.0.0.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as number followed by range
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 34 		(Key = 1.1.1.1.4.0.3.1.0.0.0.0.0.0.0.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as range followed by number
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  separted with comma
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 35 		(Key = 1.1.1.1.4.0.3.1.0.0.0.0.0.0.0.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as range followed by number
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  separted with comma
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 36 		(Key = 1.1.1.1.5.0.3.0.0.0.0.0.0.0.0.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as combination of fields and numbers
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 37 		(Key = 1.1.1.1.5.0.3.0.0.0.0.0.0.0.0.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -f Option
+   Fields specified                                   :  specified
+   Fields separated with a comma                      :  separated
+   Fields Specified Method                            :  specified as combination of fields and numbers
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  number1 and number2 > 0 and smaller than max number of fields in the file
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 38 		(Key = 1.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -d Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 39 		(Key = 1.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -d Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  <n/a>
+   List separated with a comma                        :  <n/a>
+   List Specified Method                              :  <n/a>
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  <n/a>
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 40 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.1.4.3.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as number
+   List Specified with Individual Numbers where       :  number >0 less than the max number of fields in the file
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 41 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.1.4.3.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as number
+   List Specified with Individual Numbers where       :  number >0 less than the max number of fields in the file
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 42 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.2.0.3.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as specified as range
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 43 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.2.0.3.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as specified as range
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 44 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.2.0.4.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as specified as range
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 == number2
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 45 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.2.0.4.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as specified as range
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 == number2
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 46 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.3.0.3.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as number followed by range
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 47 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.3.0.3.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as number followed by range
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 48 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.4.0.3.1.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as range followed by number
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  separted with comma
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 49 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.4.0.3.1.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as range followed by number
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  separted with comma
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+
+
+Test Case 50 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.5.0.3.0.1.2.1.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as combination of fields and numbers
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  Found
+
+
+Test Case 51 		(Key = 1.3.0.0.0.0.0.0.0.0.1.1.5.0.3.0.1.2.2.)
+   OptionPresentOrNot                                 :  Present
+   SelectedOption                                     :  -c Option
+   Fields specified                                   :  <n/a>
+   Fields separated with a comma                      :  <n/a>
+   Fields Specified Method                            :  <n/a>
+   Fields Specified with Individual Numbers where     :  <n/a>
+   Fields specified as range of correct numbers where :  <n/a>
+   Fields specified as a valid mix of range, number   :  <n/a>
+   DelimeterSpecified_Yes/No                          :  <n/a>
+   Delimeter length                                   :  <n/a>
+   List specified                                     :  specified
+   List separated with a comma                        :  separated
+   List Specified Method                              :  specified as combination of fields and numbers
+   List Specified with Individual Numbers where       :  <n/a>
+   List specified as range of correct numbers where   :  number1 and number2 > 0 and smaller than max number of fields in the file
+   List specified as a valid mix of range, number     :  <n/a>
+   Filename                                           :  present
+   File_Size                                          :  not empty
+   Filename found on the OS                           :  NotFound
+

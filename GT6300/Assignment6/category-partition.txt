@@ -1,0 +1,96 @@
+# OPTION
+	OptionPresentOrNot:
+		Present.													
+		NotPresent.													[error][property noOptionInput]		
+	SelectedOption:
+		-f Option.															[if !noOptionInput] [property fOption]
+		-d Option.															[if !noOptionInput] [property dOption]	
+		-c Option.															[if !noOptionInput] [property cOption]
+		invalid Option Specified									[error]
+	
+	Fields specified:												
+		specified.													[if fOption]
+		not specified.												[error]
+	Fields separated with a comma:
+		separated.													[if fOption]
+		notSeparated.												[error]
+	Fields Specified Method:
+		specified as number.										[if fOption] [property fieldsSpecifiedAsIndividualNumber]
+		specified as specified as range.							[if fOption] [property fieldsSpecifiedAsRange]
+		specified as number followed by range.						[if fOption] [property fieldsSpecifiedAsNumberFollowedByRange]
+		specified as range followed by number.						[if fOption] [property fieldsSpecifiedAsRangeFollowedByNumber]
+		specified as combination of fields and numbers.				[if fOption] [property fieldsSpecifiedAsCombinationFieldsAndNumbers]
+	Fields Specified with Individual Numbers where:
+		number < 0. 															[single] [if fOption && fieldsSpecifiedAsIndividualNumber]
+		number == 0.															[single] [if fOption && fieldsSpecifiedAsIndividualNumber]
+		number == 1.															[single] [if fOption && fieldsSpecifiedAsIndividualNumber]
+		number >0 less than the max number of fields in the file. 						 [if fOption && fieldsSpecifiedAsIndividualNumber]
+		number >0 where number grater than max number of fields in file. 		[single] [if fOption && fieldsSpecifiedAsIndividualNumber]
+		number >0 where number grater than maxInt (or number triggering error). [error] 
+	Fields specified as range of correct numbers where:
+		number1 or number2 < 0.													[single] [if fOption && fieldsSpecifiedAsRange]
+		number1 or number2 == 0.											    [single] [if fOption && fieldsSpecifiedAsRange]
+		number1 and number2 > 0 and smaller than max number of fields in the file.  [if fOption]
+		number1 > number2 														[error] 
+		number1 == number2.														[if fOption && fieldsSpecifiedAsRange]
+		the number1 or number2 is grater than max number(error)					[error] 	
+	Fields specified as a valid mix of range, number:
+		separted with comma.													[if fOption && fieldsSpecifiedAsRangeFollowedByNumber]
+		not separated with comma.												[single]
+
+	DelimeterSpecified_Yes/No: 
+		delimeterSpecified.														[if fOption && dOption]
+		delimeterNotSpecified.													[error]
+	Delimeter length:
+		one char.																[if fOption && dOption]
+		more than one char.														[error]
+	Delimeter specified sing ""
+		yes																		[if fOption && dOption]
+		notProperlySpecifiedDelimeter 											[error]
+		
+	List specified:												
+		specified.													[if cOption]
+		not specified.												[error]	
+	List separated with a comma:
+		separated.													[if cOption]
+		notSeparated.												[error]
+	List Specified Method:
+		specified as number.										[if cOption] [property listSpecifiedAsIndividualNumber]
+		specified as specified as range.							[if cOption] [property listSpecifiedAsRange]
+		specified as number followed by range.						[if cOption] [property listSpecifiedAsNumberFollowedByRange]
+		specified as range followed by number.						[if cOption] [property listSpecifiedAsRangeFollowedByNumber]
+		specified as combination of fields and numbers.				[if cOption] [property listSpecifiedAsCombinationFieldsAndNumbers]
+	List Specified with Individual Numbers where:
+		number < 0. 															[single] [if cOption && listSpecifiedAsIndividualNumber]
+		number == 0.															[single] [if cOption && listSpecifiedAsIndividualNumber]
+		number == 1.															[single] [if cOption && listSpecifiedAsIndividualNumber]
+		number >0 less than the max number of fields in the file. 						 [if cOption && listSpecifiedAsIndividualNumber]
+		number >0 where number grater than max number of fields in file. 		[single] [if cOption && listSpecifiedAsIndividualNumber]
+		number >0 where number grater than maxInt (or number triggering error). [error] 
+	List specified as range of correct numbers where:
+		number1 or number2 < 0.													[single] [if cOption && listSpecifiedAsRange]
+		number1 or number2 == 0.											    [single] [if cOption && listSpecifiedAsRange]
+		number1 and number2 > 0 and smaller than max number of fields in the file. 			[if cOption]
+		number1 > number2 														[error] 
+		number1 == number2.														[if cOption && listSpecifiedAsRange]
+		the number1 or number2 is grater than max number(error)					[error] 	
+	List specified as a valid mix of range, number:
+		separted with comma.													[if cOption && listSpecifiedAsRangeFollowedByNumber]
+		not separated with comma.												[single]
+
+# FILE				
+	Filename:				
+		present.
+		notPresent(user did not input filename)						[error]
+	File_Size:
+		empty.														[single]
+		not empty.
+		too large for parser.										[error]
+
+# Filename
+	Filename found on the OS:
+		Found.
+		NotFound.(file not found by OS)								[error]
+		
+	
+
