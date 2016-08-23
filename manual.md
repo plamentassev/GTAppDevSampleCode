@@ -32,9 +32,9 @@ The included code demonstrate some sample swagger documentation, controllers, cl
 
 [Spring Controllers](IHGcode/controller)
 
-[Classes](IHGcode/classes)
+[Java Classes](IHGcode/classes)
 
-[junits](IHGcode/junit)
+[JUnits](IHGcode/junit)
 
 [JSP](IHGcode/jsp)
 
@@ -42,7 +42,7 @@ The included code demonstrate some sample swagger documentation, controllers, cl
 
 [Selenium](IHGcode/selenium)
 
-[swagger](IHGcode/swagger)
+[Swagger](IHGcode/swagger)
 
 
 ![Section of the site for most of the sample code](IHGcode/images/IHGCapture.PNG)
