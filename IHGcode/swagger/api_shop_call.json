@@ -1,0 +1,662 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API",
+        "description": "API specification Shop call iSeatz",
+        "version": "1.0.0"
+    },
+    "host": "ihg.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v1",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/cars/shop": {
+            "get": {
+                "summary": "Product Types",
+                "description": "Retrieve real-time availability and pricing for rental cars.\n",
+                "parameters": [
+                    {
+                        "name": "DisplayCurrency",
+                        "in": "query",
+                        "description": "ISO 4217 currency code",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Locale",
+                        "in": "query",
+                        "description": "Language and country (region) code pair",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "SessionToken",
+                        "in": "query",
+                        "description": "(For debugging) Returned from every valid OneView response and should always be passed back into the next request. This allows iSeatz to chain a sequence of API requests for reporting purposes.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "CarType",
+                        "in": "query",
+                        "description": "Filter results for particular types of car",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Dropoff",
+                        "in": "query",
+                        "description": "Car drop-off date and time using the format YYYY-MM-DDThh:mm",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "DropoffLocation",
+                        "in": "query",
+                        "description": "Drop-off location, of the Hertz location identifier",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "MaxResults",
+                        "in": "query",
+                        "description": "Maximum number of cars in result set",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Pickup",
+                        "in": "query",
+                        "description": "Car pick-up date and time using the format YYYY-MM-DDThh:mm",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "PickUpLocation",
+                        "in": "query",
+                        "description": "Pick up location, Hertz location identifier",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "PromoCode",
+                        "in": "query",
+                        "description": "Promotion code provided by a car supplier",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Shop call"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Shop call was successful",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Shop"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Input was rejected in validation"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Shop": {
+            "type": "object",
+            "properties": {
+                "Cars": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Car"
+                    },
+                    "description": "The cars available for the specified parameters"
+                },
+                "Locale": {
+                    "type": "string",
+                    "description": "Passed in locale code, or the default if the passed in code was unknown"
+                },
+                "RentalLocations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RentalLocation"
+                    },
+                    "description": "Passed in locale code, or the default if the passed in code was unknown"
+                },
+                "RequestToken": {
+                    "type": "string",
+                    "description": "Pickup and Dropoff Locations"
+                },
+                "SessionToken": {
+                    "type": "string",
+                    "description": "Can be used by iSeatz support to diagnose problems/unexpected behavior for call"
+                },
+                "Version": {
+                    "type": "string",
+                    "description": "API response version"
+                }
+            },
+            "xml": {
+                "name": "Shop"
+            }
+        },
+        "Car": {
+            "type": "object",
+            "description": "Car array",
+            "properties": {
+                "CarDetail": {
+                    "type": "object",
+                    "$ref": "#/definitions/CarDetails",
+                    "description": "Car details"
+                },
+                "DropOffLocationId": {
+                    "type": "string",
+                    "description": "Maps to a RentalLocation for drop off"
+                },
+                "PickUpLocationId": {
+                    "type": "string",
+                    "description": "Maps to a RentalLocation for pick up"
+                },
+                "Photos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Photo"
+                    },
+                    "description": "Array of photos"
+                },
+                "Rate": {
+                    "type": "object",
+                    "$ref": "#/definitions/CarRate",
+                    "description": "Object containing all the pieces that created the total charge"
+                },
+                "SupplierCode": {
+                    "type": "string",
+                    "description": "Car supplier code"
+                },
+                "Vendor": {
+                    "type": "string",
+                    "description": "Car vendor code and description"
+                }
+            },
+            "xml": {
+                "name": "Car"
+            }
+        },
+        "CarRate": {
+            "type": "object",
+            "description": "Object containing all the pieces that created the total charge",
+            "properties": {
+                "Actual": {
+                    "type": "object",
+                    "$ref": "#/definitions/Price",
+                    "description": "Actual charge"
+                },
+                "BookToken": {
+                    "type": "string",
+                    "description": "Reservation token associated with this rate quote"
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "Rate description (e.g Minimum 2 Day(s) rental; Return rental by Tuesday 9:59)"
+                },
+                "Display": {
+                    "type": "object",
+                    "$ref": "#/definitions/Price",
+                    "description": "Displayed charge. Display shows the rate converted into the customer’s native currency based on the supplied locale. It should not be considered authoritative.)"
+                },
+                "DistanceRestriction": {
+                    "type": "object",
+                    "$ref": "#/definitions/DistanceRestriction",
+                    "description": "Distance restrictions information"
+                },
+                "Calculation": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PriceCalculation"
+                    },
+                    "description": "How the rate is calculated"
+                },
+                "SalesModel": {
+                    "type": "string",
+                    "description": "Whether the user is charged upon booking ('Pay Now') or upon checkin ('Pay Later')",
+                    "default": "Pay Now",
+                    "enum": [
+                        "Pay Now",
+                        "Pay Later"
+                    ]
+                },
+                "Surcharges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Surcharge"
+                    },
+                    "description": "Taxes and fees applied to base charge"
+                }
+            },
+            "xml": {
+                "name": "CarRate"
+            }
+        },
+        "Price": {
+            "type": "object",
+            "description": "Actual Price",
+            "properties": {
+                "Amount": {
+                    "type": "string",
+                    "description": "Charge amount in stated currency INCLUSIVE of taxes, fees and markup (if any)"
+                },
+                "BaseAmount": {
+                    "type": "string",
+                    "description": "Charge amount in stated currency EXCLUSIVE of taxes, fees, and markup (if any)"
+                },
+                "Currency": {
+                    "type": "string",
+                    "description": "ISO currency code"
+                }
+            },
+            "xml": {
+                "name": "Price"
+            }
+        },
+        "DistanceRestriction": {
+            "type": "object",
+            "description": "Charge per distance unit",
+            "properties": {
+                "Distance": {
+                    "type": "integer",
+                    "description": "Distance allowed per day without charge if IsUnlimited is false"
+                },
+                "IsUnlimited": {
+                    "type": "boolean",
+                    "description": "Is there a charge per distance unit"
+                },
+                "Period": {
+                    "type": "string",
+                    "description": "Type of time period (e.g. 'Day')",
+                    "default": "Day",
+                    "enum": [
+                        "Day",
+                        "Week",
+                        "Month"
+                    ]
+                },
+                "Unit": {
+                    "type": "string",
+                    "description": "Type of distance unit (e.g. 'Mile')"
+                }
+            },
+            "xml": {
+                "name": "DistanceRestriction"
+            }
+        },
+        "PriceCalculation": {
+            "type": "object",
+            "description": "A calculation shows how a price is assessed over a time period",
+            "properties": {
+                "Actual": {
+                    "type": "object",
+                    "$ref": "#/definitions/Price"
+                },
+                "Display": {
+                    "type": "object",
+                    "$ref": "#/definitions/Price"
+                },
+                "Quantity": {
+                    "type": "integer",
+                    "description": "Quantity of time periods"
+                },
+                "Unit": {
+                    "type": "string",
+                    "description": "Period of time",
+                    "default": "Day",
+                    "enum": [
+                        "Hour",
+                        "Day",
+                        "Week",
+                        "Month",
+                        "Year"
+                    ]
+                }
+            },
+            "xml": {
+                "name": "Price"
+            }
+        },
+        "Surcharge": {
+            "type": "object",
+            "description": "Surcharge container element",
+            "properties": {
+                "Actual": {
+                    "type": "object",
+                    "$ref": "#/definitions/Price"
+                },
+                "Calculation": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PriceCalculation"
+                    }
+                },
+                "Code": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "Display": {
+                    "type": "object",
+                    "$ref": "#/definitions/Price"
+                },
+                "IsIncludedInRate": {
+                    "type": "boolean",
+                    "description": "Indicates whether this surcharge is included in the rate"
+                },
+                "IsRequired": {
+                    "type": "boolean",
+                    "description": "Indicates whether guest will be required to pay this surcharge"
+                },
+                "IsTaxIncluded": {
+                    "type": "boolean",
+                    "description": "Indicates whether tax is included in this surcharge"
+                },
+                "Type": {
+                    "type": "string",
+                    "enum": [
+                        "Tax",
+                        "Fee",
+                        "Coverage",
+                        "Month",
+                        "Miscellaneous"
+                    ]
+                }
+            },
+            "xml": {
+                "name": "Price"
+            }
+        },
+        "Photo": {
+            "type": "object",
+            "description": "Car photos",
+            "properties": {
+                "IsDefault": {
+                    "type": "boolean",
+                    "description": "Boolean for whether this is the default photo"
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "Image thumbnail URL"
+                },
+                "Url": {
+                    "type": "string",
+                    "description": "Image URL"
+                }
+            },
+            "xml": {
+                "name": "Photo"
+            }
+        },
+        "CarDetails": {
+            "type": "object",
+            "description": "Car array",
+            "properties": {
+                "AgeRequirements": {
+                    "type": "object",
+                    "$ref": "#/definitions/AgeRequirements",
+                    "description": "Driver age requirements"
+                },
+                "AirConditioning": {
+                    "type": "boolean",
+                    "description": "Does car have air conditioning"
+                },
+                "AntiLockBrakes": {
+                    "type": "boolean",
+                    "description": "Does car have an anti-lock braking system"
+                },
+                "Category": {
+                    "type": "string",
+                    "description": "Vehicle category e.g. Car, SUV, Convertible"
+                },
+                "Class": {
+                    "type": "string",
+                    "description": "Vehicle class e.g. Compact, Standard, Luxurye"
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "Description of car"
+                },
+                "Doors": {
+                    "type": "integer",
+                    "description": "Number of car doors"
+                },
+                "DriverAirbag": {
+                    "type": "boolean",
+                    "description": "Does car have a driver-side airbag"
+                },
+                "DriveType": {
+                    "type": "string",
+                    "description": "Car drive type code"
+                },
+                "FuelEconomy": {
+                    "type": "object",
+                    "$ref": "#/definitions/FuelEconomy",
+                    "description": "The fuel economy of a car"
+                },
+                "FuelType": {
+                    "type": "string",
+                    "description": "Car fuel type code"
+                },
+                "IsGuaranteeRequired": {
+                    "type": "boolean",
+                    "description": "Is a guarantee required to rent this car"
+                },
+                "LuggageCapacity": {
+                    "type": "integer",
+                    "description": "Number of pieces of luggage that the car can hold"
+                },
+                "PassengerAirbag": {
+                    "type": "boolean",
+                    "description": "Does car have a passenger-side airbag"
+                },
+                "Seats": {
+                    "type": "integer",
+                    "description": "Number of car seats"
+                },
+                "SIPP": {
+                    "type": "string",
+                    "description": "Number of car seats"
+                },
+                "Sunroof": {
+                    "type": "boolean",
+                    "description": "Does car have a sunroof"
+                },
+                "TransmissionType": {
+                    "type": "boolean",
+                    "description": "Car transmission code"
+                }
+            },
+            "xml": {
+                "name": "CarDetails"
+            }
+        },
+        "AgeRequirements": {
+            "type": "object",
+            "description": "Requirements for the age of the Driver",
+            "properties": {
+                "Minimum": {
+                    "type": "integer",
+                    "description": "Minimum age of the Driver"
+                },
+                "SurchargeBegin": {
+                    "type": "integer",
+                    "description": "Drivers aged between SurchargeBegin and SurchargeEnd will be assessed a young-driver surcharge"
+                },
+                "SurchargeEnd": {
+                    "type": "integer",
+                    "description": "Drivers aged between SurchargeBegin and SurchargeEnd will be assessed a young-driver surcharge"
+                }
+            },
+            "xml": {
+                "name": "AgeRequirements"
+            }
+        },
+        "FuelEconomy": {
+            "type": "object",
+            "description": "Fuel Economy",
+            "properties": {
+                "Amount": {
+                    "type": "integer",
+                    "description": "The distance a car can travel per unit (e.g. miles per gallon)"
+                },
+                "Unit": {
+                    "type": "string",
+                    "description": "The fuel economy unit",
+                    "default": "MPG",
+                    "enum": [
+                        "MPG",
+                        "KPL"
+                    ]
+                }
+            },
+            "xml": {
+                "name": "FuelEconomy"
+            }
+        },
+        "RentalLocation": {
+            "type": "object",
+            "description": "Pickup or Dropoff location",
+            "properties": {
+                "Code": {
+                    "type": "string",
+                    "description": "Location code"
+                },
+                "Id": {
+                    "type": "string",
+                    "description": "Location Id"
+                },
+                "IsAirportLocation": {
+                    "type": "boolean",
+                    "description": "Present if an airport location"
+                },
+                "IsPickup": {
+                    "type": "boolean",
+                    "description": "Is location the pickup location"
+                },
+                "IsDropoff": {
+                    "type": "boolean",
+                    "description": "Is location the dropoff location"
+                },
+                "Location": {
+                    "type": "object",
+                    "$ref": "#/definitions/Location"
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "Location name"
+                },
+                "Phone": {
+                    "type": "string",
+                    "description": "Location phone number"
+                },
+                "Type": {
+                    "type": "string",
+                    "description": "Location type (e.g. 'In terminal')"
+                }
+            },
+            "xml": {
+                "name": "RentalLocation"
+            }
+        },
+        "Location": {
+            "type": "object",
+            "description": "Location",
+            "properties": {
+                "Address1": {
+                    "type": "string",
+                    "description": "Address line 1"
+                },
+                "Address2": {
+                    "type": "string",
+                    "description": "Address line 2"
+                },
+                "City": {
+                    "type": "string"
+                },
+                "StateProvince": {
+                    "type": "object",
+                    "$ref": "#/definitions/StateProvince",
+                    "description": "State/province"
+                },
+                "PostalCode": {
+                    "type": "string"
+                },
+                "Country": {
+                    "type": "object",
+                    "$ref": "#/definitions/Country"
+                },
+                "Longitude": {
+                    "type": "string"
+                },
+                "Latitude": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "Location"
+            }
+        },
+        "StateProvince": {
+            "type": "object",
+            "description": "Location",
+            "properties": {
+                "Code": {
+                    "type": "string",
+                    "description": "ISO 2-letter State/Province code (e.g. MA')"
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "State/province name"
+                }
+            },
+            "xml": {
+                "name": "StateProvince"
+            }
+        },
+        "Country": {
+            "type": "object",
+            "description": "Location",
+            "properties": {
+                "Code": {
+                    "type": "string",
+                    "description": "ISO 2-letter Country code (e.g. 'US')"
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "Country name"
+                }
+            },
+            "xml": {
+                "name": "Country"
+            }
+        }
+    }
+}

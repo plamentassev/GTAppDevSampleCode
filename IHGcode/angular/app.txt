@@ -1,0 +1,9 @@
+(function() {
+	"use strict";
+	
+	var MODULE_NAME = "YourStay";
+	// register module for bootstrap
+	window.IHGNg.modules.push(MODULE_NAME);
+	// create module
+	angular.module(MODULE_NAME, ["Utils", "ngSanitize"]);
+})();
