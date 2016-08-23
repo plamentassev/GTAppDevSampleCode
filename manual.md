@@ -1,6 +1,7 @@
 # Demo code:
 
 The code I included is divided in two sections:
+
 1. Code from [CS 6300: Software Development Process ](http://www.omscs.gatech.edu/cs-6300-software-development-process). This was my first course at GT and I received an A. Included are only my *individual* assignments.
 
 2. Sample from [IHG.com](https://www.ihg.com/hotels/us/en/reservation) (Intercontinental Hotel Group) where I presently work as a Software Engineer. This code is a result of *collaboration* of my team.
