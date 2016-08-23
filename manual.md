@@ -26,6 +26,7 @@ The code I included is divided in two sections:
 
 ## IHG Code:
 The included code demonstrate some sample swagger documentation, controllers, classes, jUnit, JSP,AngularJS, and Selenium code. Because of the nature of the the team no single person completed single section of the code and all of us had to modify and add code as needed.
+[!Section of the site for most of the sample code](IHGcode/images/IHGCapture.png)
 
 [Spring Controllers](IHGcode/controller)
 
