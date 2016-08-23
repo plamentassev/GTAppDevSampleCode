@@ -42,6 +42,9 @@ The included code demonstrate some sample swagger documentation, controllers, cl
 
 [Selenium](IHGcode/selenium)
 
+[swagger](IHGcode/swagger)
+
+
 ![Section of the site for most of the sample code](IHGcode/images/IHGCapture.PNG)
 
 
