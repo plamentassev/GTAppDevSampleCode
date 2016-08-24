@@ -1,8 +1,10 @@
 # Demo code:
 
 The code I included is divided in two sections:
-1. Code from [CS 6300: Software Development Process ](http://www.omscs.gatech.edu/cs-6300-software-development-process). This was my first course at GT and I received an A. Included are only my individual assignments.
-2. Sample from [IHG.com](https://www.ihg.com/hotels/us/en/reservation) (Intercontinental Hotel Group) where I presently work as a Software Engineer. This code is a result of collaboration of my team.
+
+1. Code from [CS 6300: Software Development Process ](http://www.omscs.gatech.edu/cs-6300-software-development-process). This was my first course at GT and I received an A. Included are only my *individual* assignments.
+
+2. Sample from [IHG.com](https://www.ihg.com/hotels/us/en/reservation) (Intercontinental Hotel Group) where I presently work as a Software Engineer. This code is a result of a *collaboration* with my team.
 
 ## Georgia Tech Code:
 ### Assignment links:
@@ -25,20 +27,23 @@ The code I included is divided in two sections:
 
 
 ## IHG Code:
-The included code demonstrate some sample swagger documentation, controllers, classes, jUnit, JSP,AngularJS, and Selenium code. Because of the nature of the the team no single person completed single section of the code and all of us had to modify and add code as needed.
+The included code demonstrates some sample swagger documentation, controllers, classes, JUnit, JSP, AngularJS, and Selenium code. Because of the nature of the team no single person completed single sections of the code and all of us had to modify and add code as needed.
 
 
 [Spring Controllers](IHGcode/controller)
 
-[Classes](IHGcode/classes)
+[Java Classes](IHGcode/classes)
 
-[junits](IHGcode/junit)
+[JUnits](IHGcode/junit)
 
 [JSP](IHGcode/jsp)
 
 [AngulatJS](IHGcode/angular)
 
 [Selenium](IHGcode/selenium)
+
+[Swagger](IHGcode/swagger)
+
 
 ![Section of the site for most of the sample code](IHGcode/images/IHGCapture.PNG)
 
